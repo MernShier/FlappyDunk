@@ -15,8 +15,8 @@ namespace BallSystem
         [SerializeField] private float upForce;
         [SerializeField] private float speed;
         [Inject] private BallScorer _ballScorer;
-        private int _scoreForRing;
         private Rigidbody2D _rb;
+        private int _scoreForRing;
 
         private void Awake()
         {
@@ -70,7 +70,19 @@ namespace BallSystem
         public void MoveUp()
         {
             _rb.velocity = Vector2.zero;
-            _rb.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+            if (_rb.gravityScale > 0)
+            {
+                _rb.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+            }
+            else
+            {
+                _rb.AddForce(Vector2.up * -upForce, ForceMode2D.Impulse);
+            }
+        }
+
+        public void ChangeGravity()
+        {
+            _rb.gravityScale = -_rb.gravityScale;
         }
     }
 }

@@ -7,9 +7,11 @@ namespace Core
     public class MainInstaller : MonoInstaller
     {
         [SerializeField] private Ball ball;
+        [SerializeField] private BallCam ballCam;
         public override void InstallBindings()
         {
             Container.Bind<Ball>().FromInstance(ball).AsSingle().NonLazy();
+            Container.Bind<BallCam>().FromInstance(ballCam).AsSingle().NonLazy();
 
             Container.Bind<BallScorer>().AsSingle().NonLazy();
         }
