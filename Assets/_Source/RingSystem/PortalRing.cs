@@ -6,16 +6,13 @@ namespace RingSystem
     public class PortalRing : Ring
     {
         [SerializeField] private PortalRing tpRing;
-
-        protected override void OnTriggerEnter2D(Collider2D col)
+        
+        protected override void Pass(Transform passer)
         {
-            if (collisionConfig.BallLayer.Contains(col.gameObject.layer))
-            {
-                col.gameObject.transform.position = tpRing.transform.position;
-            }
-
+            passer.gameObject.transform.position = tpRing.transform.position;
             tpRing.DestroyRing();
-            base.OnTriggerEnter2D(col);
+            
+            base.Pass(passer);
         }
     }
 }

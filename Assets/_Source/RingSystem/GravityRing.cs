@@ -8,14 +8,12 @@ namespace RingSystem
     public class GravityRing : Ring
     {
         [Inject] private Ball _ball;
-        
-        protected override void OnTriggerEnter2D(Collider2D col)
+
+        protected override void Pass(Transform passer)
         {
-            if (collisionConfig.BallLayer.Contains(col.gameObject.layer))
-            {
-                _ball.ChangeGravity();
-            }
-            base.OnTriggerEnter2D(col);
+            _ball.ChangeGravity();
+
+            base.Pass(passer);
         }
     }
 }

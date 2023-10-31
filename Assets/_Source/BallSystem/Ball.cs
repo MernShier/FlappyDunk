@@ -1,7 +1,6 @@
-using System;
+using System.Collections;
 using BallSystem.Data;
 using Extensions;
-using Unity.Collections;
 using UnityEngine;
 using Utils;
 using Zenject;
@@ -11,12 +10,16 @@ namespace BallSystem
     [RequireComponent(typeof(Rigidbody2D))]
     public class Ball : MonoBehaviour
     {
-        [SerializeField] private CollisionConfig collisionConfig;
+        private const int BASE_SCORE_FOR_RING = 1;
         [SerializeField] private float upForce;
         [SerializeField] private float speed;
+        [SerializeField] private int maxShield;
+        [Inject] private CollisionConfig _collisionConfig;
         [Inject] private BallScorer _ballScorer;
+        [Inject] private BallShield _ballShield;
         private Rigidbody2D _rb;
-        private int _scoreForRing;
+        private float _scoreForRing;
+        private float _scoreMult = 1;
 
         private void Awake()
         {
@@ -25,7 +28,8 @@ namespace BallSystem
 
         private void Start()
         {
-            _scoreForRing = 1;
+            _scoreForRing = BASE_SCORE_FOR_RING;
+            _ballShield.SetMaxShield(maxShield);
         }
 
         private void Update()
@@ -35,30 +39,41 @@ namespace BallSystem
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            if (collisionConfig.RingLayer.Contains(col.gameObject.layer))
+            if (_collisionConfig.RingLayer.Contains(col.gameObject.layer))
             {
-                _scoreForRing = 1;
+                _scoreForRing = BASE_SCORE_FOR_RING * _scoreMult;
             }
         }
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (collisionConfig.RingCenterLayer.Contains(col.gameObject.layer))
+            if (_collisionConfig.RingCenterLayer.Contains(col.gameObject.layer))
             {
                 _ballScorer.AddScore(_scoreForRing);
-                _scoreForRing++;
+                _scoreForRing += BASE_SCORE_FOR_RING * _scoreMult;
                 Debug.Log(_ballScorer.Score);
             }
             
-            if (collisionConfig.RingBottomLayer.Contains(col.gameObject.layer))
+            if (_collisionConfig.RingBottomLayer.Contains(col.gameObject.layer))
             {
-                SceneChanger.ReloadScene();
+                if (_ballShield.Shield > 0)
+                {
+                    _ballShield.AddShield(-1);
+                    return;
+                }
+                
+                Death();
             }
             
-            if (collisionConfig.WallLayer.Contains(col.gameObject.layer))
+            if (_collisionConfig.WallLayer.Contains(col.gameObject.layer))
             {
-                SceneChanger.ReloadScene();
+                Death();
             }
+        }
+
+        private void Death()
+        {
+            SceneChanger.ReloadScene();
         }
 
         public void MoveHorizontal()
@@ -83,6 +98,20 @@ namespace BallSystem
         public void ChangeGravity()
         {
             _rb.gravityScale = -_rb.gravityScale;
+        }
+
+        public void StartMultiplyScore(float duration, float mult)
+        {
+            StartCoroutine(MultiplyScore(duration, mult));
+        }
+
+        private IEnumerator MultiplyScore(float duration, float mult)
+        {
+            _scoreMult += mult - 1;
+            _scoreForRing *= _scoreMult;
+            yield return new WaitForSeconds(duration);
+            _scoreForRing /= _scoreMult;
+            _scoreMult -= mult - 1;
         }
     }
 }

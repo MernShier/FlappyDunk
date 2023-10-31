@@ -1,30 +1,27 @@
+using System;
+using BallSystem;
 using BallSystem.Data;
 using Extensions;
 using UnityEngine;
 using Zenject;
 
-namespace RingSystem
+namespace Collectibles
 {
-    public abstract class Ring : MonoBehaviour
+    public abstract class Collectible : MonoBehaviour
     {
         [Inject] protected CollisionConfig CollisionConfig;
-        
+
         protected void OnTriggerEnter2D(Collider2D col)
         {
             if (CollisionConfig.BallLayer.Contains(col.gameObject.layer))
             {
-                Pass(col.transform);
+                PickUp(col.transform);
             }
         }
 
-        protected virtual void Pass(Transform passer)
+        protected virtual void PickUp(Transform collector)
         {
-            DestroyRing();
-        }
-
-        protected void DestroyRing()
-        {
-            Destroy(transform.parent.gameObject);
+            Destroy(gameObject);
         }
     }
 }
