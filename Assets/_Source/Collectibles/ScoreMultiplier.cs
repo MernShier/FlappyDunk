@@ -1,4 +1,5 @@
 using BallSystem;
+using BallSystem.Data;
 using UnityEngine;
 using Zenject;
 
@@ -8,7 +9,13 @@ namespace Collectibles
     {
         [SerializeField] private float duration;
         [SerializeField] private float multiplier;
-        [Inject] private Ball _ball;
+        private Ball _ball;
+
+        [Inject]
+        private void Init(Ball ball)
+        {
+            _ball = ball;
+        }
         
         protected override void PickUp(Transform collector)
         {

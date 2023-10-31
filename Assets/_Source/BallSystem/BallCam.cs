@@ -6,10 +6,16 @@ namespace BallSystem
 {
     public class BallCam : MonoBehaviour
     {
-        [Inject] private Ball _ball;
+        private Ball _ball;
         private float _baseBallPositionX;
         private float _baseCamPositionX;
 
+        [Inject]
+        private void Init(Ball ball)
+        {
+            _ball = ball;
+        }
+        
         private void Start()
         {
             _baseBallPositionX = _ball.transform.position.x;

@@ -2,7 +2,7 @@ using System;
 
 namespace BallSystem
 {
-    public class BallScorer
+    public class BallScore
     {
         public event Action OnBallScoreChange;
         public float Score { get; private set; }

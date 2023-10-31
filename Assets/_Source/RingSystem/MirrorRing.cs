@@ -1,4 +1,5 @@
 using BallSystem;
+using BallSystem.Data;
 using Extensions;
 using UnityEngine;
 using Zenject;
@@ -7,7 +8,13 @@ namespace RingSystem
 {
     public class MirrorRing : Ring
     {
-        [Inject] private BallCam _ballCam;
+        private BallCam _ballCam;
+        
+        [Inject]
+        private void Init(BallCam ballCam)
+        {
+            _ballCam = ballCam;
+        }
         
         protected override void Pass(Transform passer)
         {

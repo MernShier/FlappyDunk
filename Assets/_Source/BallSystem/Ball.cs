@@ -14,13 +14,21 @@ namespace BallSystem
         [SerializeField] private float upForce;
         [SerializeField] private float speed;
         [SerializeField] private int maxShield;
-        [Inject] private CollisionConfig _collisionConfig;
-        [Inject] private BallScorer _ballScorer;
-        [Inject] private BallShield _ballShield;
+        private CollisionConfig _collisionConfig;
+        private BallScore _ballScore;
+        private BallShield _ballShield;
         private Rigidbody2D _rb;
         private float _scoreForRing;
         private float _scoreMult = 1;
-
+        
+        [Inject]
+        private void Init(CollisionConfig collisionConfig, BallScore ballScore, BallShield ballShield)
+        {
+            _collisionConfig = collisionConfig;
+            _ballScore = ballScore;
+            _ballShield = ballShield;
+        }
+        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -49,9 +57,9 @@ namespace BallSystem
         {
             if (_collisionConfig.RingCenterLayer.Contains(col.gameObject.layer))
             {
-                _ballScorer.AddScore(_scoreForRing);
+                _ballScore.AddScore(_scoreForRing);
                 _scoreForRing += BASE_SCORE_FOR_RING * _scoreMult;
-                Debug.Log(_ballScorer.Score);
+                Debug.Log(_ballScore.Score);
             }
             
             if (_collisionConfig.RingBottomLayer.Contains(col.gameObject.layer))

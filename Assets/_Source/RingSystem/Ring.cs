@@ -7,11 +7,17 @@ namespace RingSystem
 {
     public abstract class Ring : MonoBehaviour
     {
-        [Inject] protected CollisionConfig CollisionConfig;
-        
-        protected void OnTriggerEnter2D(Collider2D col)
+        private CollisionConfig _collisionConfig;
+
+        [Inject]
+        private void Init(CollisionConfig collisionConfig)
         {
-            if (CollisionConfig.BallLayer.Contains(col.gameObject.layer))
+            _collisionConfig = collisionConfig;
+        }
+        
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (_collisionConfig.BallLayer.Contains(col.gameObject.layer))
             {
                 Pass(col.transform);
             }

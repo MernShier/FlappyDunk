@@ -9,11 +9,17 @@ namespace Collectibles
 {
     public abstract class Collectible : MonoBehaviour
     {
-        [Inject] protected CollisionConfig CollisionConfig;
+        private CollisionConfig _collisionConfig;
 
-        protected void OnTriggerEnter2D(Collider2D col)
+        [Inject]
+        private void Init(CollisionConfig collisionConfig)
         {
-            if (CollisionConfig.BallLayer.Contains(col.gameObject.layer))
+            _collisionConfig = collisionConfig;
+        }
+
+        private void OnTriggerEnter2D(Collider2D col)
+        {
+            if (_collisionConfig.BallLayer.Contains(col.gameObject.layer))
             {
                 PickUp(col.transform);
             }
