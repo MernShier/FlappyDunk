@@ -1,5 +1,6 @@
 using BallSystem;
 using BallSystem.Data;
+using ScoreSystem;
 using UnityEngine;
 using Zenject;
 
@@ -18,7 +19,9 @@ namespace Core
             Container.Bind<Ball>().FromInstance(ball).AsSingle().NonLazy();
             Container.Bind<BallCam>().FromInstance(ballCam).AsSingle().NonLazy();
 
-            Container.Bind<BallScore>().AsSingle().NonLazy();
+            Container.Bind<Game>().AsSingle().NonLazy();
+            Container.Bind<Scorer>().AsSingle().NonLazy();
+            Container.Bind<RingScore>().AsSingle().NonLazy();
             Container.Bind<BallShield>().AsSingle().NonLazy();
         }
     }

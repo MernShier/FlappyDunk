@@ -1,8 +1,8 @@
-using System.Collections;
 using BallSystem.Data;
-using Extensions;
+using ScoreSystem;
 using UnityEngine;
 using Utils;
+using Utils.Extensions;
 using Zenject;
 
 namespace BallSystem
@@ -10,25 +10,25 @@ namespace BallSystem
     [RequireComponent(typeof(Rigidbody2D))]
     public class Ball : MonoBehaviour
     {
-        private const int BASE_SCORE_FOR_RING = 1;
         [SerializeField] private float upForce;
         [SerializeField] private float speed;
         [SerializeField] private int maxShield;
         private CollisionConfig _collisionConfig;
-        private BallScore _ballScore;
+        private Scorer _scorer;
+        private RingScore _ringScore;
         private BallShield _ballShield;
         private Rigidbody2D _rb;
-        private float _scoreForRing;
-        private float _scoreMult = 1;
-        
+
         [Inject]
-        private void Init(CollisionConfig collisionConfig, BallScore ballScore, BallShield ballShield)
+        private void Construct(CollisionConfig collisionConfig, Scorer scorer, RingScore ringScore,
+            BallShield ballShield)
         {
             _collisionConfig = collisionConfig;
-            _ballScore = ballScore;
+            _scorer = scorer;
+            _ringScore = ringScore;
             _ballShield = ballShield;
         }
-        
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -36,7 +36,6 @@ namespace BallSystem
 
         private void Start()
         {
-            _scoreForRing = BASE_SCORE_FOR_RING;
             _ballShield.SetMaxShield(maxShield);
         }
 
@@ -49,7 +48,7 @@ namespace BallSystem
         {
             if (_collisionConfig.RingLayer.Contains(col.gameObject.layer))
             {
-                _scoreForRing = BASE_SCORE_FOR_RING * _scoreMult;
+                _ringScore.ResetScoreForRing();
             }
         }
 
@@ -57,11 +56,11 @@ namespace BallSystem
         {
             if (_collisionConfig.RingCenterLayer.Contains(col.gameObject.layer))
             {
-                _ballScore.AddScore(_scoreForRing);
-                _scoreForRing += BASE_SCORE_FOR_RING * _scoreMult;
-                Debug.Log(_ballScore.Score);
+                _scorer.AddScore(_ringScore.ScoreForRing);
+                _ringScore.AddScoreForRing();
+                Debug.Log(_scorer.Score);
             }
-            
+
             if (_collisionConfig.RingBottomLayer.Contains(col.gameObject.layer))
             {
                 if (_ballShield.Shield > 0)
@@ -69,10 +68,10 @@ namespace BallSystem
                     _ballShield.AddShield(-1);
                     return;
                 }
-                
+
                 Death();
             }
-            
+
             if (_collisionConfig.WallLayer.Contains(col.gameObject.layer))
             {
                 Death();
@@ -89,7 +88,7 @@ namespace BallSystem
             var position = transform.position;
             transform.position = new Vector3(position.x + speed * Time.deltaTime, position.y, position.z);
         }
-        
+
         public void MoveUp()
         {
             _rb.velocity = Vector2.zero;
@@ -110,16 +109,7 @@ namespace BallSystem
 
         public void StartMultiplyScore(float duration, float mult)
         {
-            StartCoroutine(MultiplyScore(duration, mult));
-        }
-
-        private IEnumerator MultiplyScore(float duration, float mult)
-        {
-            _scoreMult += mult - 1;
-            _scoreForRing *= _scoreMult;
-            yield return new WaitForSeconds(duration);
-            _scoreForRing /= _scoreMult;
-            _scoreMult -= mult - 1;
+            StartCoroutine(_ringScore.MultiplyScore(duration, mult));
         }
     }
 }

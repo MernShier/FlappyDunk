@@ -1,8 +1,8 @@
 using System;
 using BallSystem;
 using BallSystem.Data;
-using Extensions;
 using UnityEngine;
+using Utils.Extensions;
 using Zenject;
 
 namespace Collectibles
@@ -12,7 +12,7 @@ namespace Collectibles
         private CollisionConfig _collisionConfig;
 
         [Inject]
-        private void Init(CollisionConfig collisionConfig)
+        private void Construct(CollisionConfig collisionConfig)
         {
             _collisionConfig = collisionConfig;
         }
@@ -27,7 +27,7 @@ namespace Collectibles
 
         protected virtual void PickUp(Transform collector)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

@@ -1,8 +1,8 @@
 using System;
 
-namespace BallSystem
+namespace ScoreSystem
 {
-    public class BallScore
+    public class Scorer
     {
         public event Action OnBallScoreChange;
         public float Score { get; private set; }

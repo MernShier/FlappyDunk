@@ -11,7 +11,7 @@ namespace BallSystem
         private float _baseCamPositionX;
 
         [Inject]
-        private void Init(Ball ball)
+        private void Construct(Ball ball)
         {
             _ball = ball;
         }

@@ -1,6 +1,5 @@
 using BallSystem;
 using BallSystem.Data;
-using Extensions;
 using UnityEngine;
 using Zenject;
 
@@ -11,7 +10,7 @@ namespace RingSystem
         private Ball _ball;
         
         [Inject]
-        private void Init(Ball ball)
+        private void Construct(Ball ball)
         {
             _ball = ball;
         }

@@ -11,7 +11,7 @@ namespace Collectibles
         private BallShield _ballShield;
 
         [Inject]
-        private void Init(BallShield ballShield)
+        private void Construct(BallShield ballShield)
         {
             _ballShield = ballShield;
         }

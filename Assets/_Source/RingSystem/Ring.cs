@@ -1,6 +1,6 @@
 using BallSystem.Data;
-using Extensions;
 using UnityEngine;
+using Utils.Extensions;
 using Zenject;
 
 namespace RingSystem
@@ -10,7 +10,7 @@ namespace RingSystem
         private CollisionConfig _collisionConfig;
 
         [Inject]
-        private void Init(CollisionConfig collisionConfig)
+        private void Construct(CollisionConfig collisionConfig)
         {
             _collisionConfig = collisionConfig;
         }
@@ -30,7 +30,7 @@ namespace RingSystem
 
         protected void DestroyRing()
         {
-            Destroy(transform.parent.gameObject);
+            transform.parent.gameObject.SetActive(false);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Collectibles
         private Ball _ball;
 
         [Inject]
-        private void Init(Ball ball)
+        private void Construct(Ball ball)
         {
             _ball = ball;
         }
