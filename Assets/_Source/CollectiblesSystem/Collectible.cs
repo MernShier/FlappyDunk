@@ -1,11 +1,9 @@
-using System;
-using BallSystem;
 using BallSystem.Data;
 using UnityEngine;
 using Utils.Extensions;
 using Zenject;
 
-namespace Collectibles
+namespace CollectiblesSystem
 {
     public abstract class Collectible : MonoBehaviour
     {

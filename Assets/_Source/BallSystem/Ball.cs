@@ -14,16 +14,19 @@ namespace BallSystem
         [SerializeField] private float speed;
         [SerializeField] private int maxShield;
         private CollisionConfig _collisionConfig;
+        private SceneChanger _sceneChanger;
         private Scorer _scorer;
         private RingScore _ringScore;
         private BallShield _ballShield;
         private Rigidbody2D _rb;
+        private bool _frozen;
 
         [Inject]
-        private void Construct(CollisionConfig collisionConfig, Scorer scorer, RingScore ringScore,
-            BallShield ballShield)
+        private void Construct(CollisionConfig collisionConfig, SceneChanger sceneChanger,
+            Scorer scorer, RingScore ringScore, BallShield ballShield)
         {
             _collisionConfig = collisionConfig;
+            _sceneChanger = sceneChanger;
             _scorer = scorer;
             _ringScore = ringScore;
             _ballShield = ballShield;
@@ -41,7 +44,10 @@ namespace BallSystem
 
         private void Update()
         {
-            MoveHorizontal();
+            if (!_frozen)
+            {
+                MoveHorizontal();
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D col)
@@ -80,10 +86,10 @@ namespace BallSystem
 
         private void Death()
         {
-            SceneChanger.ReloadScene();
+            _sceneChanger.ReloadScene();
         }
 
-        public void MoveHorizontal()
+        private void MoveHorizontal()
         {
             var position = transform.position;
             transform.position = new Vector3(position.x + speed * Time.deltaTime, position.y, position.z);
@@ -105,6 +111,20 @@ namespace BallSystem
         public void ChangeGravity()
         {
             _rb.gravityScale = -_rb.gravityScale;
+        }
+
+        public void Freeze(bool value)
+        {
+            if (value)
+            {
+                _frozen = true;
+                _rb.bodyType = RigidbodyType2D.Static;
+            }
+            else
+            {
+                _frozen = false;
+                _rb.bodyType = RigidbodyType2D.Dynamic;
+            }
         }
 
         public void StartMultiplyScore(float duration, float mult)

@@ -1,9 +1,8 @@
 using BallSystem;
-using BallSystem.Data;
 using UnityEngine;
 using Zenject;
 
-namespace Collectibles
+namespace CollectiblesSystem
 {
     public class ScoreMultiplier : Collectible
     {
