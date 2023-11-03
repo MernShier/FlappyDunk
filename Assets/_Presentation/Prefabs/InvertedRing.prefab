@@ -167,8 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4964a874523e17942b85a92b667ba6dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionConfig: {fileID: 11400000, guid: ddee537068c22f0438dc5bd6261b3c02, type: 2}
-  ringBottom: {fileID: 2933299501357949423}
 --- !u!1 &6372381457795363520
 GameObject:
   m_ObjectHideFlags: 0
