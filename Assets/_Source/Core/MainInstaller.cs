@@ -31,7 +31,6 @@ namespace Core
             Container.Bind<RingScore>().AsSingle().NonLazy();
 
             Container.Bind<Game>().AsSingle().NonLazy();
-            Container.Bind<SceneChanger>().AsSingle().NonLazy();
         }
     }
 }
