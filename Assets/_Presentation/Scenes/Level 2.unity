@@ -237,16 +237,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoubleSideRing (21)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5048078540490824216, guid: 316871bd50aae1f45bd74ee99af3b430, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2870615062288447571, guid: 316871bd50aae1f45bd74ee99af3b430, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 146834738}
   m_SourcePrefab: {fileID: 100100000, guid: 316871bd50aae1f45bd74ee99af3b430, type: 3}
 --- !u!4 &146834736 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 82054030864534359, guid: 316871bd50aae1f45bd74ee99af3b430, type: 3}
   m_PrefabInstance: {fileID: 146834735}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &146834737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2870615062288447571, guid: 316871bd50aae1f45bd74ee99af3b430, type: 3}
+  m_PrefabInstance: {fileID: 146834735}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &146834738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146834737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634e2759e7135444a993e6b95d4fe508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &226793325
 PrefabInstance:
   m_ObjectHideFlags: 0
