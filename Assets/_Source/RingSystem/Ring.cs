@@ -1,4 +1,6 @@
+using System;
 using BallSystem.Data;
+using ModestTree.Util;
 using UnityEngine;
 using Utils.Extensions;
 using Zenject;
@@ -7,6 +9,7 @@ namespace RingSystem
 {
     public abstract class Ring : MonoBehaviour
     {
+        public event Action OnRingDestroy;
         private CollisionConfig _collisionConfig;
 
         [Inject]
@@ -30,6 +33,7 @@ namespace RingSystem
 
         protected void DestroyRing()
         {
+            OnRingDestroy?.Invoke();
             transform.parent.gameObject.SetActive(false);
         }
     }
