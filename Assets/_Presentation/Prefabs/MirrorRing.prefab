@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.007296607, y: 0.17502627}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -76,7 +76,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7857624, y: 0.480636}
+  m_Size: {x: 1.0143896, y: 0.27263373}
   m_EdgeRadius: 0
 --- !u!114 &2311997773433665062
 MonoBehaviour:
@@ -90,8 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c04a7bdd93a224948b0320189fe8e9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionConfig: {fileID: 11400000, guid: ddee537068c22f0438dc5bd6261b3c02, type: 2}
-  ringBottom: {fileID: 5224714443539912616}
 --- !u!1 &5224714443539912616
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,7 +234,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: -0.45, y: 0}
+  m_Offset: {x: -0.58985174, y: -0.02282948}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -247,7 +245,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09865713, y: 1}
+  m_Size: {x: 0.11081815, y: 0.30496806}
   m_EdgeRadius: 0
 --- !u!61 &3380993851162657466
 BoxCollider2D:
@@ -281,7 +279,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 1
-  m_Offset: {x: 0.45, y: 0}
+  m_Offset: {x: 0.581339, y: 0.015219659}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -292,7 +290,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.09865713, y: 1}
+  m_Size: {x: 0.11811465, y: 0.29989475}
   m_EdgeRadius: 0
 --- !u!50 &8114729023044774651
 Rigidbody2D:
@@ -360,34 +358,34 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 2660320706120972034}
     m_ColliderPaths:
-    - - X: -16026857
-        Y: 2000000
-      - X: -19973142
-        Y: 2000000
-      - X: -19973142
-        Y: -2000000
-      - X: -16026857
-        Y: -2000000
+    - - X: -21377706
+        Y: 2486359
+      - X: -25810432
+        Y: 2486359
+      - X: -25810432
+        Y: -3361952
+      - X: -21377706
+        Y: -3361952
   - m_Collider: {fileID: 3380993851162657466}
     m_ColliderPaths:
-    - - X: 19973142
-        Y: 2000000
-      - X: 16026857
-        Y: 2000000
-      - X: 16026857
-        Y: -2000000
-      - X: 19973142
-        Y: -2000000
+    - - X: 25615854
+        Y: 3167375
+      - X: 20891266
+        Y: 3167375
+      - X: 20891266
+        Y: -2583646
+      - X: 25615854
+        Y: -2583646
   m_CompositePaths:
     m_Paths:
-    - - {x: 1.9972848, y: -0.2}
-      - {x: 1.9972848, y: 0.2}
-      - {x: 1.6026857, y: 0.1999707}
-      - {x: 1.602715, y: -0.2}
-    - - {x: -1.602715, y: -0.2}
-      - {x: -1.602715, y: 0.2}
-      - {x: -1.9973142, y: 0.1999707}
-      - {x: -1.9972848, y: -0.2}
+    - - {x: 2.561556, y: -0.25836462}
+      - {x: 2.561556, y: 0.3167375}
+      - {x: 2.0891266, y: 0.3167082}
+      - {x: 2.089156, y: -0.25836462}
+    - - {x: -2.1378, y: -0.3361952}
+      - {x: -2.1378, y: 0.2486359}
+      - {x: -2.5810432, y: 0.2486066}
+      - {x: -2.581014, y: -0.3361952}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
   m_UseDelaunayMesh: 0
@@ -418,8 +416,8 @@ Transform:
   m_GameObject: {fileID: 8150806294065090706}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 4, y: 0.4, z: 1}
+  m_LocalPosition: {x: 0, y: 0.3794, z: 0}
+  m_LocalScale: {x: 4, y: 1.91768, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2737031651350981410}
@@ -468,8 +466,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.50687975, g: 1, b: 0.47450984, a: 1}
+  m_Sprite: {fileID: 21300000, guid: b099915fea7e0734db73a5e513d8bb42, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
