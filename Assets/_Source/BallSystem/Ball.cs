@@ -126,10 +126,5 @@ namespace BallSystem
                 _rb.bodyType = RigidbodyType2D.Dynamic;
             }
         }
-
-        public void StartMultiplyScore(float duration, float mult)
-        {
-            StartCoroutine(_ringScore.MultiplyScore(duration, mult));
-        }
     }
 }

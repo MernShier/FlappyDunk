@@ -17,8 +17,9 @@ namespace Core
         
         public override void InstallBindings()
         {
+            Container.Bind<AsyncProcessor>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<CollisionConfig>().FromInstance(collisionConfig).AsSingle().NonLazy();
-            
+
             Container.Bind<GameStateMachine>().AsSingle().NonLazy();
             Container.Bind<LevelStartState>().AsSingle().NonLazy();
             Container.Bind<PlayState>().AsSingle().NonLazy();

@@ -1,21 +1,35 @@
+using System;
+using System.Collections.Generic;
+using Core;
 using UnityEngine;
+using Zenject;
 
 namespace RingSystem
 {
     public class MovingRingLine : MonoBehaviour
     {
-        [SerializeField] private Transform startPosition;
-        [SerializeField] private Transform finalPosition;
-        [SerializeField] private Ring ring;
+        [SerializeField] private List<Transform> points;
+        [SerializeField] private GameObject ring;
         [SerializeField] private float ringSpeed;
+        private Ring _ring;
         private Vector3 _movePosition;
-
+        private int _movePointIndex;
+        
+        private void Awake()
+        {
+            _ring = ring.transform.GetComponentInChildren<Ring>();
+            
+            if (_ring == null) 
+                throw new NullReferenceException("Ring Script not found in Ring GameObject children");
+        }
+        
         private void Start()
         {
-            ring.transform.parent.position = startPosition.position;
-            _movePosition = finalPosition.position;
-
-            ring.OnRingDestroy += Destroy;
+            ring.transform.position = points[0].position;
+            _movePosition = points[1].position;
+            _movePointIndex = 1;
+            
+            _ring.OnRingDestroy += Destroy;
         }
 
         private void Update()
@@ -25,20 +39,28 @@ namespace RingSystem
 
         private void MoveRing()
         {
-            var ringParent = ring.transform.parent;
-
-            if (ringParent.position == _movePosition)
+            if (ring.transform.position == _movePosition)
             {
                 SetMovePosition();
             }
 
-            ringParent.position =
-                Vector2.MoveTowards(ringParent.position, _movePosition, ringSpeed * Time.deltaTime);
+            ring.transform.position =
+                Vector2.MoveTowards(ring.transform.position, _movePosition, ringSpeed * Time.deltaTime);
         }
 
         private void SetMovePosition()
         {
-            _movePosition = _movePosition == startPosition.position ? finalPosition.position : startPosition.position;
+            _movePointIndex++;
+            
+            if (_movePointIndex >= points.Count)
+            {
+                _movePointIndex = 0;
+                _movePosition = points[0].position;
+            }
+            else
+            {
+                _movePosition = points[_movePointIndex].position;
+            }
         }
 
         private void Destroy()

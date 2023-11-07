@@ -1,4 +1,4 @@
-using BallSystem;
+using ScoreSystem;
 using UnityEngine;
 using Zenject;
 
@@ -8,17 +8,17 @@ namespace CollectiblesSystem
     {
         [SerializeField] private float duration;
         [SerializeField] private float multiplier;
-        private Ball _ball;
+        private RingScore _ringScore;
 
         [Inject]
-        private void Construct(Ball ball)
+        private void Construct(RingScore ringScore)
         {
-            _ball = ball;
+            _ringScore = ringScore;
         }
         
         protected override void PickUp(Transform collector)
         {
-            _ball.StartMultiplyScore(duration, multiplier);
+            _ringScore.StartMultiplyScore(duration, multiplier);
             base.PickUp(collector);
         }
     }
