@@ -2,14 +2,14 @@ using UnityEngine.SceneManagement;
 
 namespace Utils
 {
-    public class SceneChanger
+    public static class SceneChanger
     {
-        public void ReloadScene()
+        public static void ReloadScene()
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
-        public void LoadSceneBySceneIndex(int index)
+        public static void LoadSceneBySceneIndex(int index)
         {
             SceneManager.LoadScene(index);
         }

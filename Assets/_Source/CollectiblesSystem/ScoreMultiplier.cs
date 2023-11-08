@@ -16,7 +16,7 @@ namespace CollectiblesSystem
             _ringScore = ringScore;
         }
         
-        protected override void PickUp(Transform collector)
+        protected override void PickUp(Collider2D collector)
         {
             _ringScore.StartMultiplyScore(duration, multiplier);
             base.PickUp(collector);

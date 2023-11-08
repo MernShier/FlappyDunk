@@ -1,8 +1,4 @@
-using System;
 using BallSystem;
-using UnityEngine;
-using Zenject;
-
 
 namespace Core.StateMachine.States
 {

@@ -9,7 +9,7 @@ namespace BallSystem
         public int Shield { get; private set; }
         public int MaxShield { get; private set; }
 
-        public void AddShield(int value)
+        public void ChangeShield(int value)
         {
             Shield = Math.Clamp(Shield + value, 0, MaxShield);
             OnBallShieldChange?.Invoke();

@@ -9,14 +9,7 @@ namespace UI
     public class SceneReloadingButtonView : MonoBehaviour
     {
         private Button _button;
-        private SceneChanger _sceneChanger;
 
-        [Inject]
-        private void Construct(SceneChanger sceneChanger)
-        {
-            _sceneChanger = sceneChanger;
-        }
-        
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -24,7 +17,7 @@ namespace UI
 
         private void Start()
         {
-            _button.onClick.AddListener(delegate {_sceneChanger.ReloadScene(); });
+            _button.onClick.AddListener(SceneChanger.ReloadScene);
         }
     }
 }

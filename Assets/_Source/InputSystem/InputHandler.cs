@@ -21,16 +21,17 @@ namespace InputSystem
 
         private void Update()
         {
-            if (!Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.Mouse0) &&
-                (Input.touchCount <= 0 || Input.GetTouch(0).phase != TouchPhase.Began)) return;
-
-            if (!_started)
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse0) ||
+                (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             {
-                _gameStateMachine.SwitchState(typeof(PlayState));
-                _started = true;
-            }
+                if (!_started)
+                {
+                    _gameStateMachine.SwitchState<PlayState>();
+                    _started = true;
+                }
 
-            _ball.MoveUp();
+                _ball.MoveUp();
+            }
         }
     }
 }

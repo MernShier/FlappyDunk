@@ -1,6 +1,5 @@
 using System;
-using BallSystem.Data;
-using ModestTree.Util;
+using Collision.Data;
 using UnityEngine;
 using Utils.Extensions;
 using Zenject;
@@ -22,16 +21,16 @@ namespace RingSystem
         {
             if (_collisionConfig.BallLayer.Contains(col.gameObject.layer))
             {
-                Pass(col.transform);
+                Pass(col);
             }
         }
 
-        protected virtual void Pass(Transform passer)
+        protected virtual void Pass(Collider2D passer)
         {
             DestroyRing();
         }
 
-        protected void DestroyRing()
+        public void DestroyRing()
         {
             OnRingDestroy?.Invoke();
             transform.parent.gameObject.SetActive(false);

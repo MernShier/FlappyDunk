@@ -1,4 +1,4 @@
-using BallSystem.Data;
+using Collision.Data;
 using UnityEngine;
 using Utils.Extensions;
 using Zenject;
@@ -19,11 +19,11 @@ namespace CollectiblesSystem
         {
             if (_collisionConfig.BallLayer.Contains(col.gameObject.layer))
             {
-                PickUp(col.transform);
+                PickUp(col);
             }
         }
 
-        protected virtual void PickUp(Transform collector)
+        protected virtual void PickUp(Collider2D collector)
         {
             gameObject.SetActive(false);
         }

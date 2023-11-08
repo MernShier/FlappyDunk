@@ -7,7 +7,6 @@ namespace Core
     {
         public override void InstallBindings()
         {
-            Container.Bind<SceneChanger>().AsSingle().NonLazy();
         }
     }
 }

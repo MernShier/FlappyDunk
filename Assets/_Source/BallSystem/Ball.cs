@@ -1,4 +1,4 @@
-using BallSystem.Data;
+using Collision.Data;
 using ScoreSystem;
 using UnityEngine;
 using Utils;
@@ -13,21 +13,20 @@ namespace BallSystem
         [SerializeField] private float upForce;
         [SerializeField] private float speed;
         [SerializeField] private int maxShield;
+        [SerializeField] private int shieldForRing;
         private CollisionConfig _collisionConfig;
-        private SceneChanger _sceneChanger;
-        private Scorer _scorer;
+        private Score _score;
         private RingScore _ringScore;
         private BallShield _ballShield;
         private Rigidbody2D _rb;
         private bool _frozen;
 
         [Inject]
-        private void Construct(CollisionConfig collisionConfig, SceneChanger sceneChanger,
-            Scorer scorer, RingScore ringScore, BallShield ballShield)
+        private void Construct(CollisionConfig collisionConfig, 
+            Score score, RingScore ringScore, BallShield ballShield)
         {
             _collisionConfig = collisionConfig;
-            _sceneChanger = sceneChanger;
-            _scorer = scorer;
+            _score = score;
             _ringScore = ringScore;
             _ballShield = ballShield;
         }
@@ -62,16 +61,16 @@ namespace BallSystem
         {
             if (_collisionConfig.RingCenterLayer.Contains(col.gameObject.layer))
             {
-                _scorer.AddScore(_ringScore.ScoreForRing);
+                _score.ChangeScore(_ringScore.ScoreForRing);
                 _ringScore.AddScoreForRing();
-                Debug.Log(_scorer.Score);
+                Debug.Log(_score.Value);
             }
 
             if (_collisionConfig.RingBottomLayer.Contains(col.gameObject.layer))
             {
                 if (_ballShield.Shield > 0)
                 {
-                    _ballShield.AddShield(-1);
+                    _ballShield.ChangeShield(-shieldForRing);
                     return;
                 }
 
@@ -86,7 +85,7 @@ namespace BallSystem
 
         private void Death()
         {
-            _sceneChanger.ReloadScene();
+            SceneChanger.ReloadScene();
         }
 
         private void MoveHorizontal()
@@ -98,33 +97,25 @@ namespace BallSystem
         public void MoveUp()
         {
             _rb.velocity = Vector2.zero;
-            if (_rb.gravityScale > 0)
+
+            var force = Vector2.up * upForce;
+            if (_rb.gravityScale <= 0)
             {
-                _rb.AddForce(Vector2.up * upForce, ForceMode2D.Impulse);
+                force *= -1;
             }
-            else
-            {
-                _rb.AddForce(Vector2.up * -upForce, ForceMode2D.Impulse);
-            }
+
+            _rb.AddForce(force, ForceMode2D.Impulse);
         }
 
         public void ChangeGravity()
         {
-            _rb.gravityScale = -_rb.gravityScale;
+            _rb.gravityScale *= -1;
         }
 
         public void Freeze(bool value)
         {
-            if (value)
-            {
-                _frozen = true;
-                _rb.bodyType = RigidbodyType2D.Static;
-            }
-            else
-            {
-                _frozen = false;
-                _rb.bodyType = RigidbodyType2D.Dynamic;
-            }
+            _frozen = value;
+            _rb.bodyType = _frozen ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
         }
     }
 }

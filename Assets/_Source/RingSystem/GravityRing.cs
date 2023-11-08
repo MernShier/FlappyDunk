@@ -1,5 +1,4 @@
 using BallSystem;
-using BallSystem.Data;
 using UnityEngine;
 using Zenject;
 
@@ -15,7 +14,7 @@ namespace RingSystem
             _ball = ball;
         }
 
-        protected override void Pass(Transform passer)
+        protected override void Pass(Collider2D passer)
         {
             _ball.ChangeGravity();
 

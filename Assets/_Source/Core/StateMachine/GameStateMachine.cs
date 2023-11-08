@@ -15,12 +15,13 @@ namespace Core.StateMachine
             _states.Add(typeof(LevelStartState), levelStartState);
         }
 
-        public void SwitchState(Type newState)
+        public void SwitchState<T>()
         {
-            if (!_states.ContainsKey(newState)) return;
+            var type = typeof(T);
+            if (!_states.ContainsKey(type)) return;
             
             _currentState?.Exit();
-            _currentState = _states[newState];
+            _currentState = _states[type];
             _currentState.Enter();
         }
     }

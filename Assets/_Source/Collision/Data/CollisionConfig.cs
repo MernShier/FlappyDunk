@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace BallSystem.Data
+namespace Collision.Data
 {
     [CreateAssetMenu(fileName = "CollisionConfigSO", menuName = "SO/BallSystem/CollisionConfigSO")]
     public class CollisionConfig : ScriptableObject

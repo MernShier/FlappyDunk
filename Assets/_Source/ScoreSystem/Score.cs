@@ -2,14 +2,14 @@ using System;
 
 namespace ScoreSystem
 {
-    public class Scorer
+    public class Score
     {
         public event Action OnBallScoreChange;
-        public float Score { get; private set; }
+        public float Value { get; private set; }
 
-        public void AddScore(float value)
+        public void ChangeScore(float value)
         {
-            Score += value;
+            Value += value;
             OnBallScoreChange?.Invoke();
         }
     }

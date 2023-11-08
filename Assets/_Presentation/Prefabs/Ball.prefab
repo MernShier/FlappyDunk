@@ -128,7 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upForce: 6
   speed: 3
-  maxShield: 0
+  maxShield: 5
+  shieldForRing: 1
 --- !u!58 &9153317983161271281
 CircleCollider2D:
   m_ObjectHideFlags: 0

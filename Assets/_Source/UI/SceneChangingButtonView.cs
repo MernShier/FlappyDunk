@@ -10,14 +10,7 @@ namespace UI
     {
         [SerializeField] private int sceneIndex;
         private Button _button;
-        private SceneChanger _sceneChanger;
 
-        [Inject]
-        private void Construct(SceneChanger sceneChanger)
-        {
-            _sceneChanger = sceneChanger;
-        }
-        
         private void Awake()
         {
             _button = GetComponent<Button>();
@@ -25,7 +18,7 @@ namespace UI
 
         private void Start()
         {
-            _button.onClick.AddListener(delegate {_sceneChanger.LoadSceneBySceneIndex(sceneIndex); });
+            _button.onClick.AddListener(() => {SceneChanger.LoadSceneBySceneIndex(sceneIndex); });
         }
     }
 }

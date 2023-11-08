@@ -1,4 +1,3 @@
-using System;
 using Core.StateMachine;
 using Core.StateMachine.States;
 using UnityEngine;
@@ -18,7 +17,7 @@ namespace Core
         
         private void Start()
         {
-            _gameStateMachine.SwitchState(typeof(LevelStartState));
+            _gameStateMachine.SwitchState<LevelStartState>();
         }
     }
 }

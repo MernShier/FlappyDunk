@@ -15,9 +15,9 @@ namespace CollectiblesSystem
             _ballShield = ballShield;
         }
         
-        protected override void PickUp(Transform collector)
+        protected override void PickUp(Collider2D collector)
         {
-            _ballShield.AddShield(value);
+            _ballShield.ChangeShield(value);
             base.PickUp(collector);
         }
     }

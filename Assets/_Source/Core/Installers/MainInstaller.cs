@@ -1,5 +1,5 @@
 using BallSystem;
-using BallSystem.Data;
+using Collision.Data;
 using Core.StateMachine;
 using Core.StateMachine.States;
 using ScoreSystem;
@@ -17,21 +17,37 @@ namespace Core
         
         public override void InstallBindings()
         {
+            InstallLevelBindings();
+            InstallBallBindings();
+            InstallStateMachineBindings();
+            InstallScoreBindings();
+        }
+        
+        private void InstallLevelBindings()
+        {
             Container.Bind<AsyncProcessor>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<CollisionConfig>().FromInstance(collisionConfig).AsSingle().NonLazy();
+            Container.Bind<Game>().AsSingle().NonLazy();
+        }
 
-            Container.Bind<GameStateMachine>().AsSingle().NonLazy();
-            Container.Bind<LevelStartState>().AsSingle().NonLazy();
-            Container.Bind<PlayState>().AsSingle().NonLazy();
-            
+        private void InstallBallBindings()
+        {
             Container.Bind<Ball>().FromInstance(ball).AsSingle().NonLazy();
             Container.Bind<BallCam>().FromInstance(ballCam).AsSingle().NonLazy();
             Container.Bind<BallShield>().AsSingle().NonLazy();
-            
-            Container.Bind<Scorer>().AsSingle().NonLazy();
+        }
+        
+        private void InstallStateMachineBindings()
+        {
+            Container.Bind<LevelStartState>().AsCached().NonLazy();
+            Container.Bind<PlayState>().AsCached().NonLazy();
+            Container.Bind<GameStateMachine>().AsSingle().NonLazy();
+        }
+        
+        private void InstallScoreBindings()
+        {
+            Container.Bind<Score>().AsSingle().NonLazy();
             Container.Bind<RingScore>().AsSingle().NonLazy();
-
-            Container.Bind<Game>().AsSingle().NonLazy();
         }
     }
 }
