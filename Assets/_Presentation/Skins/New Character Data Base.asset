@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edfc346ff6cbfcb439ca5da3a0344694, type: 3}
+  m_Name: New Character Data Base
+  m_EditorClassIdentifier: 
+  Character:
+  - CharacterName: Ball1
+    CharacterSprite: {fileID: 21300000, guid: 7b7411a75c22b9844981bf5623686866, type: 3}
+  - CharacterName: Ball2
+    CharacterSprite: {fileID: 21300000, guid: e9cb53cbfe76e3041a228c205635e6e7, type: 3}
+  - CharacterName: Ball3
+    CharacterSprite: {fileID: 21300000, guid: 90212af67130d8c418b0875acb23b1dd, type: 3}
+  - CharacterName: Ball4
+    CharacterSprite: {fileID: 21300000, guid: aba32bc9d038b9d4681988afcebafe59, type: 3}
+  - CharacterName: Ball5
+    CharacterSprite: {fileID: 21300000, guid: d0076146f565e3147a2c009323bc2840, type: 3}
+  - CharacterName: Ball6
+    CharacterSprite: {fileID: 21300000, guid: 5f62954b40d53fa4fa732dcaa2b61de6, type: 3}
+  - CharacterName: Ball7
+    CharacterSprite: {fileID: 21300000, guid: e01904234046b5e49acc8a0ef856f16c, type: 3}
+  - CharacterName: Ball8
+    CharacterSprite: {fileID: 21300000, guid: 57c33a9ee99b2674a827660b29a50525, type: 3}
+  - CharacterName: Ball9
+    CharacterSprite: {fileID: 21300000, guid: cf5c798e41b179248bacac108aff0c18, type: 3}
+  - CharacterName: Ball10
+    CharacterSprite: {fileID: 21300000, guid: 181ece60b681fe042b74a74c6994ca25, type: 3}
+  - CharacterName: Ball11
+    CharacterSprite: {fileID: 21300000, guid: 433a937ed65938347a9af85930cea5bb, type: 3}
+  - CharacterName: Ball12
+    CharacterSprite: {fileID: 21300000, guid: 49164dda625758d4e8a20b303e8fe10f, type: 3}
+  - CharacterName: Ball13
+    CharacterSprite: {fileID: 21300000, guid: be5076486bbf5184aa538f913b189b99, type: 3}
+  - CharacterName: Ball14
+    CharacterSprite: {fileID: 21300000, guid: c41eaf340fbe2574d8876a8bb535c6b5, type: 3}
+  - CharacterName: Ball15
+    CharacterSprite: {fileID: 21300000, guid: fdfa0aa1b6a94224ebf9a9dc843c7cd3, type: 3}
+  - CharacterName: Ball16
+    CharacterSprite: {fileID: 21300000, guid: 94c88203f0c12f9449620bd5d2084da7, type: 3}
