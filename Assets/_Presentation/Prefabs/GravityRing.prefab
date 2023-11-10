@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c3ec211561b99542b8dc5a9e6f1b4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ringScorePopup: {fileID: 5368477039531996250, guid: bf3e5fdc0ebd0d248bf95e7a5212f649, type: 3}
 --- !u!1 &3491863903888336774
 GameObject:
   m_ObjectHideFlags: 0

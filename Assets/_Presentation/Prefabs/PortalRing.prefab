@@ -400,6 +400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 612801494a24450468b7da012d016d68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ringScorePopup: {fileID: 5368477039531996250, guid: bf3e5fdc0ebd0d248bf95e7a5212f649, type: 3}
   tpRing: {fileID: 0}
 --- !u!1 &8335849816145070588
 GameObject:

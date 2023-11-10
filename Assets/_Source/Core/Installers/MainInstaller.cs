@@ -28,6 +28,7 @@ namespace Core
         private void InstallLevelBindings()
         {
             Container.Bind<AsyncProcessor>().FromNewComponentOnNewGameObject().AsSingle();
+            Container.Bind<UniversalParent>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<CollisionConfig>().FromInstance(collisionConfig).AsSingle().NonLazy();
             Container.Bind<FinalRing>().FromInstance(finalRing).AsSingle().NonLazy();
             Container.Bind<Game>().AsSingle().NonLazy();
