@@ -589,10 +589,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortalRings (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3823226459127721713, guid: 71988f521eee22541a18851f5dbbc2cb, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5212098678990239548, guid: 71988f521eee22541a18851f5dbbc2cb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1808880885}
   m_SourcePrefab: {fileID: 100100000, guid: 71988f521eee22541a18851f5dbbc2cb, type: 3}
 --- !u!61 &41224608 stripped
 BoxCollider2D:
@@ -7131,6 +7135,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2063636625915313668, guid: 71988f521eee22541a18851f5dbbc2cb, type: 3}
   m_PrefabInstance: {fileID: 1783042175}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1808880884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5212098678990239548, guid: 71988f521eee22541a18851f5dbbc2cb, type: 3}
+  m_PrefabInstance: {fileID: 41224607}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1808880885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1808880884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634e2759e7135444a993e6b95d4fe508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1838225371
 PrefabInstance:
   m_ObjectHideFlags: 0
