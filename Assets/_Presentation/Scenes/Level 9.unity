@@ -3440,6 +3440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634e2759e7135444a993e6b95d4fe508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ringScorePopup: {fileID: 5368477039531996250, guid: bf3e5fdc0ebd0d248bf95e7a5212f649, type: 3}
 --- !u!1001 &1155179811
 PrefabInstance:
   m_ObjectHideFlags: 0
