@@ -1,4 +1,5 @@
 using System.Collections;
+using AudioSystem;
 using Collision.Data;
 using ScoreSystem;
 using UnityEngine;
@@ -8,9 +9,10 @@ using Zenject;
 
 namespace BallSystem
 {
-    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
     public class Ball : MonoBehaviour
     {
+        private static readonly int JumpTrigger = Animator.StringToHash("Jump");
         [SerializeField] private ParticleSystem deathParticles;
         [SerializeField] private float deathTime;
         [SerializeField] private float upForce;
@@ -18,17 +20,20 @@ namespace BallSystem
         [SerializeField] private int maxShield;
         [SerializeField] private int shieldForRing;
         private CollisionConfig _collisionConfig;
+        private AudioController _audioController;
         private Score _score;
         private RingScore _ringScore;
         private BallShield _ballShield;
-        private Rigidbody2D _rb;
+        private Rigidbody2D _rigidbody2D;
+        private Animator _animator;
         private bool _frozen;
 
         [Inject]
-        private void Construct(CollisionConfig collisionConfig, 
+        private void Construct(CollisionConfig collisionConfig, AudioController audioController,
             Score score, RingScore ringScore, BallShield ballShield)
         {
             _collisionConfig = collisionConfig;
+            _audioController = audioController;
             _score = score;
             _ringScore = ringScore;
             _ballShield = ballShield;
@@ -36,7 +41,8 @@ namespace BallSystem
 
         private void Awake()
         {
-            _rb = GetComponent<Rigidbody2D>();
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _animator = GetComponent<Animator>();
         }
 
         private void Start()
@@ -90,7 +96,8 @@ namespace BallSystem
         {
             Freeze(true);
             deathParticles.gameObject.SetActive(true);
-            
+            _audioController.PlayOneShot(_audioController.GameAudio.Death);
+
             yield return new WaitForSeconds(time);
             SceneChanger.ReloadScene();
         }
@@ -103,26 +110,29 @@ namespace BallSystem
 
         public void MoveUp()
         {
-            _rb.velocity = Vector2.zero;
-
+            if (_frozen) return;
+            
+            _rigidbody2D.velocity = Vector2.zero;
             var force = Vector2.up * upForce;
-            if (_rb.gravityScale <= 0)
+            if (_rigidbody2D.gravityScale <= 0)
             {
                 force *= -1;
             }
 
-            _rb.AddForce(force, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(force, ForceMode2D.Impulse);
+            _animator.SetTrigger(JumpTrigger);
+            _audioController.PlayOneShot(_audioController.GameAudio.Tap);
         }
 
         public void ChangeGravity()
         {
-            _rb.gravityScale *= -1;
+            _rigidbody2D.gravityScale *= -1;
         }
 
         public void Freeze(bool value)
         {
             _frozen = value;
-            _rb.bodyType = _frozen ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
+            _rigidbody2D.bodyType = _frozen ? RigidbodyType2D.Static : RigidbodyType2D.Dynamic;
         }
     }
 }

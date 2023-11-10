@@ -8,7 +8,7 @@ using UnityEngine;
 using Utils;
 using Zenject;
 
-namespace Core
+namespace Core.Installers
 {
     public class MainInstaller : MonoInstaller
     {
