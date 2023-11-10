@@ -5822,6 +5822,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Level 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4986050422303336289, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 5269012724479328053, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
       propertyPath: m_Pivot.x
       value: 0

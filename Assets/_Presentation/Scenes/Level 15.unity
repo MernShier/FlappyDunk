@@ -1981,6 +1981,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 44148909198561785, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 158222631446734784, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
       propertyPath: m_Name
       value: Level UI Canvas
@@ -1990,6 +1994,10 @@ PrefabInstance:
       value: 'Level 15
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585930218549097831, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5269012724479328053, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
       propertyPath: m_Pivot.x
@@ -2080,7 +2088,8 @@ PrefabInstance:
       value: TapToStartPanel
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4174833095899116565, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}

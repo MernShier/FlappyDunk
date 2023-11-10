@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Text;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,8 +6,14 @@ public class LevelManager : MonoBehaviour
 {
     public void LoadLevel(int _levelID)
     {
-        string _levelName = "Level " + _levelID;
-        SceneManager.LoadScene(_levelName);
+        var levelName = new StringBuilder("Level ");
+        levelName.Append(_levelID);
+        SceneManager.LoadScene(levelName.ToString());
+    }
+
+    public void LoadLevel(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
     }
 
     public void RestartLevel()
