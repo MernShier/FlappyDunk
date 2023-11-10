@@ -1,14 +1,14 @@
+using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using Utils;
 
 namespace RingSystem
 {
     public class FinalRing : Ring
     {
+        public event Action OnFinalRingPass;
         protected override void Pass(Collider2D passer)
         {
-            SceneChanger.LoadSceneBySceneIndex(SceneManager.GetActiveScene().buildIndex + 1);
+            OnFinalRingPass?.Invoke();
             base.Pass(passer);
         }
     }

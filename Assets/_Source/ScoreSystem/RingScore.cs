@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Utils;
@@ -9,6 +10,7 @@ namespace ScoreSystem
         private const int BASE_SCORE_FOR_RING = 1;
         private const int BASE_SCORE_MULT = 1;
         private AsyncProcessor _asyncProcessor;
+        public event Action OnRingScoreChange;
         public float ScoreForRing { get; private set; }
         public float ScoreMult { get; private set; }
 
@@ -22,11 +24,13 @@ namespace ScoreSystem
         public void AddScoreForRing()
         {
             ScoreForRing += BASE_SCORE_FOR_RING * ScoreMult;
+            OnRingScoreChange?.Invoke();
         }
         
         public void ResetScoreForRing()
         {
             ScoreForRing = BASE_SCORE_FOR_RING * ScoreMult;
+            OnRingScoreChange?.Invoke();
         }
         
         public void StartMultiplyScore(float duration, float mult)
@@ -38,11 +42,13 @@ namespace ScoreSystem
         {
             ScoreMult += mult - 1;
             ScoreForRing *= ScoreMult;
+            OnRingScoreChange?.Invoke();
             
             yield return new WaitForSeconds(duration);
             
             ScoreForRing /= ScoreMult;
             ScoreMult -= mult - 1;
+            OnRingScoreChange?.Invoke();
         }
     }
 }

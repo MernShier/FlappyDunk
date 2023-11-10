@@ -9,10 +9,10 @@ namespace Core.StateMachine
         private readonly Dictionary<Type, IState> _states = new();
         private IState _currentState;
         
-        public GameStateMachine(PlayState playState, LevelStartState levelStartState)
+        public GameStateMachine(PlayState playState, PauseState pauseState)
         {
             _states.Add(typeof(PlayState), playState);
-            _states.Add(typeof(LevelStartState), levelStartState);
+            _states.Add(typeof(PauseState), pauseState);
         }
 
         public void SwitchState<T>()

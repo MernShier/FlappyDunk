@@ -2,6 +2,7 @@ using BallSystem;
 using Collision.Data;
 using Core.StateMachine;
 using Core.StateMachine.States;
+using RingSystem;
 using ScoreSystem;
 using UnityEngine;
 using Utils;
@@ -14,6 +15,7 @@ namespace Core
         [SerializeField] private CollisionConfig collisionConfig;
         [SerializeField] private Ball ball;
         [SerializeField] private BallCam ballCam;
+        [SerializeField] private FinalRing finalRing;
         
         public override void InstallBindings()
         {
@@ -27,6 +29,7 @@ namespace Core
         {
             Container.Bind<AsyncProcessor>().FromNewComponentOnNewGameObject().AsSingle();
             Container.Bind<CollisionConfig>().FromInstance(collisionConfig).AsSingle().NonLazy();
+            Container.Bind<FinalRing>().FromInstance(finalRing).AsSingle().NonLazy();
             Container.Bind<Game>().AsSingle().NonLazy();
         }
 
@@ -39,7 +42,7 @@ namespace Core
         
         private void InstallStateMachineBindings()
         {
-            Container.Bind<LevelStartState>().AsCached().NonLazy();
+            Container.Bind<PauseState>().AsCached().NonLazy();
             Container.Bind<PlayState>().AsCached().NonLazy();
             Container.Bind<GameStateMachine>().AsSingle().NonLazy();
         }

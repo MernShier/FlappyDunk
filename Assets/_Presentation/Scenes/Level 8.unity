@@ -703,6 +703,10 @@ PrefabInstance:
       propertyPath: ballCam
       value: 
       objectReference: {fileID: 5998699344101699144, guid: 3eadf0e491226464483295f25a518883, type: 3}
+    - target: {fileID: 4818464591024662186, guid: 4eebe8aca19e88c4087ab1e9cb90ad36, type: 3}
+      propertyPath: finalRing
+      value: 
+      objectReference: {fileID: 431920527}
     - target: {fileID: 8519855107632760222, guid: 4eebe8aca19e88c4087ab1e9cb90ad36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1518,15 +1522,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3570931468908545023, guid: 7baafd6214f6f3243bab143dabc507f5, type: 3}
+    - {fileID: 1465252142852404635, guid: 7baafd6214f6f3243bab143dabc507f5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1269571564035114252, guid: 7baafd6214f6f3243bab143dabc507f5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 431920527}
   m_SourcePrefab: {fileID: 100100000, guid: 7baafd6214f6f3243bab143dabc507f5, type: 3}
 --- !u!4 &431920525 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6390122990975013470, guid: 7baafd6214f6f3243bab143dabc507f5, type: 3}
   m_PrefabInstance: {fileID: 431920524}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &431920526 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1269571564035114252, guid: 7baafd6214f6f3243bab143dabc507f5, type: 3}
+  m_PrefabInstance: {fileID: 431920524}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &431920527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431920526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634e2759e7135444a993e6b95d4fe508, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &506227829
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6329,6 +6354,10 @@ PrefabInstance:
     - target: {fileID: 3891221889335423302, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
       propertyPath: m_text
       value: Level 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4188782575755905956, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4986050422303336289, guid: 505d0ada8c18e1f488863f98b8a3ff38, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument

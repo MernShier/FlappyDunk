@@ -2,11 +2,11 @@ using BallSystem;
 
 namespace Core.StateMachine.States
 {
-    public class LevelStartState : IState
+    public class PauseState : IState
     {
         private readonly Ball _ball;
 
-        private LevelStartState(Ball ball)
+        private PauseState(Ball ball)
         {
             _ball = ball;
         }

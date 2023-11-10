@@ -671,6 +671,10 @@ PrefabInstance:
       propertyPath: ballCam
       value: 
       objectReference: {fileID: 5998699344101699144, guid: 3eadf0e491226464483295f25a518883, type: 3}
+    - target: {fileID: 4818464591024662186, guid: 4eebe8aca19e88c4087ab1e9cb90ad36, type: 3}
+      propertyPath: finalRing
+      value: 
+      objectReference: {fileID: 762296377}
     - target: {fileID: 8519855107632760222, guid: 4eebe8aca19e88c4087ab1e9cb90ad36, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
