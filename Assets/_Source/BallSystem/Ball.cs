@@ -1,3 +1,4 @@
+using System.Collections;
 using Collision.Data;
 using ScoreSystem;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace BallSystem
     [RequireComponent(typeof(Rigidbody2D))]
     public class Ball : MonoBehaviour
     {
+        [SerializeField] private ParticleSystem deathParticles;
+        [SerializeField] private float deathTime;
         [SerializeField] private float upForce;
         [SerializeField] private float speed;
         [SerializeField] private int maxShield;
@@ -74,17 +77,21 @@ namespace BallSystem
                     return;
                 }
 
-                Death();
+                StartCoroutine(Death(deathTime));
             }
 
             if (_collisionConfig.WallLayer.Contains(col.gameObject.layer))
             {
-                Death();
+                StartCoroutine(Death(deathTime));
             }
         }
 
-        private void Death()
+        private IEnumerator Death(float time)
         {
+            Freeze(true);
+            deathParticles.gameObject.SetActive(true);
+            
+            yield return new WaitForSeconds(time);
             SceneChanger.ReloadScene();
         }
 
