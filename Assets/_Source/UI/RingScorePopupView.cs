@@ -23,7 +23,7 @@ namespace UI
 
         private void UpdatePopupText()
         {
-            popupText.text = $"{_ringScore.ScoreForRing-1}";
+            popupText.text = $"+{_ringScore.ScoreForRing-1}";
         }
     }
 }

@@ -174,12 +174,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3f942ad35c14d0b8a1c36fc8f2a0f32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <GameAudio>k__BackingField:
-    <RingPass>k__BackingField: {fileID: 8300000, guid: 34c638d8d99ccfd44a261f13505ab317, type: 3}
-    <Death>k__BackingField: {fileID: 8300000, guid: 9cb65eb2505fbf443ac876ba177374f9, type: 3}
-    <Tap>k__BackingField: {fileID: 8300000, guid: b083b7753425f9c48ae0b375d6568e2f, type: 3}
   <SfxAudioSource>k__BackingField: {fileID: 8527902056371828520}
   <BackgroundAudioSource>k__BackingField: {fileID: 5747654398811561121}
+  <GameAudio>k__BackingField:
+    <RingPass>k__BackingField: {fileID: 8300000, guid: c89d74577b62aef4eb639b97c78f2ba7, type: 3}
+    <Death>k__BackingField: {fileID: 8300000, guid: aa66f043685a31e4bb90d0b6128bc3e1, type: 3}
+    <Tap>k__BackingField: {fileID: 8300000, guid: b0430a43de5d11f4c84b8ef36a4cb636, type: 3}
 --- !u!1 &7893076812704685955
 GameObject:
   m_ObjectHideFlags: 0
