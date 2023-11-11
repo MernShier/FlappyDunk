@@ -7,6 +7,7 @@ namespace AudioSystem.Data
     public class GameAudio
     {
         [field:SerializeField] public AudioClip RingPass { get; set; }
+        [field:SerializeField] public AudioClip CollectiblePickup { get; set; }
         [field:SerializeField] public AudioClip Death { get; set; }
         [field:SerializeField] public AudioClip Tap { get; set; }
     }

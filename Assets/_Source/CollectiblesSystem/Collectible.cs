@@ -1,3 +1,4 @@
+using AudioSystem;
 using Collision.Data;
 using UnityEngine;
 using Utils.Extensions;
@@ -8,11 +9,13 @@ namespace CollectiblesSystem
     public abstract class Collectible : MonoBehaviour
     {
         private CollisionConfig _collisionConfig;
+        private AudioController _audioController;
 
         [Inject]
-        private void Construct(CollisionConfig collisionConfig)
+        private void Construct(CollisionConfig collisionConfig, AudioController audioController)
         {
             _collisionConfig = collisionConfig;
+            _audioController = audioController;
         }
 
         private void OnTriggerEnter2D(Collider2D col)
@@ -25,6 +28,7 @@ namespace CollectiblesSystem
 
         protected virtual void PickUp(Collider2D collector)
         {
+            _audioController.PlayOneShot(_audioController.GameAudio.CollectiblePickup);
             gameObject.SetActive(false);
         }
     }
