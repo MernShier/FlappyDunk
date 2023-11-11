@@ -14,16 +14,13 @@ namespace UI
         private void Construct(RingScore ringScore)
         {
             _ringScore = ringScore;
-        }
-
-        private void Start()
-        {
+            
             UpdatePopupText();
         }
 
         private void UpdatePopupText()
         {
-            popupText.text = $"+{_ringScore.ScoreForRing-1}";
+            popupText.text = $"+{_ringScore.ScoreForRing}";
         }
     }
 }

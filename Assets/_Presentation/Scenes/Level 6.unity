@@ -610,6 +610,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 82054030864534359, guid: 316871bd50aae1f45bd74ee99af3b430, type: 3}
   m_PrefabInstance: {fileID: 224248254}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &242943975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5998699344101699144, guid: 3eadf0e491226464483295f25a518883, type: 3}
+  m_PrefabInstance: {fileID: 1963601610}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8f9505a3e2a3646b94071eb5ac301f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &250894890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -629,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 4818464591024662186, guid: 4eebe8aca19e88c4087ab1e9cb90ad36, type: 3}
       propertyPath: ballCam
       value: 
-      objectReference: {fileID: 5998699344101699144, guid: 3eadf0e491226464483295f25a518883, type: 3}
+      objectReference: {fileID: 242943975}
     - target: {fileID: 4818464591024662186, guid: 4eebe8aca19e88c4087ab1e9cb90ad36, type: 3}
       propertyPath: finalRing
       value: 

@@ -21,7 +21,6 @@ namespace BallSystem
         [SerializeField] private int shieldForRing;
         private CollisionConfig _collisionConfig;
         private AudioController _audioController;
-        private Score _score;
         private RingScore _ringScore;
         private BallShield _ballShield;
         private Rigidbody2D _rigidbody2D;
@@ -30,11 +29,10 @@ namespace BallSystem
 
         [Inject]
         private void Construct(CollisionConfig collisionConfig, AudioController audioController,
-            Score score, RingScore ringScore, BallShield ballShield)
+            RingScore ringScore, BallShield ballShield)
         {
             _collisionConfig = collisionConfig;
             _audioController = audioController;
-            _score = score;
             _ringScore = ringScore;
             _ballShield = ballShield;
         }
@@ -68,13 +66,6 @@ namespace BallSystem
 
         private void OnTriggerEnter2D(Collider2D col)
         {
-            if (_collisionConfig.RingCenterLayer.Contains(col.gameObject.layer))
-            {
-                _score.ChangeScore(_ringScore.ScoreForRing);
-                _ringScore.AddScoreForRing();
-                Debug.Log(_score.Value);
-            }
-
             if (_collisionConfig.RingBottomLayer.Contains(col.gameObject.layer))
             {
                 if (_ballShield.Shield > 0)
@@ -111,7 +102,7 @@ namespace BallSystem
         public void MoveUp()
         {
             if (_frozen) return;
-            
+
             _rigidbody2D.velocity = Vector2.zero;
             var force = Vector2.up * upForce;
             if (_rigidbody2D.gravityScale <= 0)
